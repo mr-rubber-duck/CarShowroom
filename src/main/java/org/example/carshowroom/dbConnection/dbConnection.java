@@ -12,11 +12,14 @@ public class dbConnection {
         try {
             Class.forName("org.postgresql.Driver");
             Connection conn = DriverManager.getConnection(url, user, password);
+            System.out.println("✅ Connected to the database");
             return conn;
         } catch (Exception e) {
+            System.err.println("❌ Database connection failed: " + e.getMessage());
             e.printStackTrace();
             return null;
         }
     }
+
 
 }

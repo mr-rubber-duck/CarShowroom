@@ -7,4 +7,6 @@ module org.example.carshowroom {
 
     opens org.example.carshowroom to javafx.fxml;
     exports org.example.carshowroom;
+    opens org.example.carshowroom.controller to javafx.fxml;
+    exports org.example.carshowroom.controller;
 }

@@ -33,7 +33,7 @@ public class UserDAO {
 
     // Check login credentials
     public boolean checkLogin(String email, String password) {
-        String query = "SELECT * FROM users WHERE email = ? AND password = ?";
+        String query = "SELECT * FROM \"User\" WHERE email = ? AND password = ?";
 
         try (Connection conn = dbConn.connect();
              PreparedStatement stmt = conn.prepareStatement(query)) {
