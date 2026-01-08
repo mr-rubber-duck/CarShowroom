@@ -1,0 +1,21 @@
+username: showroom
+passwrd showroom
+ database showroom_db
+
+
+ psql -U showroom -d showroom_db
+
+
+ \dt
+ SELECT * FROM vehicles;
+
+ SELECT * 
+FROM vehicles v 
+JOIN cars c ON v.id = c.id; 
+
+
+for moto
+
+SELECT * 
+FROM vehicles v 
+JOIN motorcycles m ON v.id = m.id;

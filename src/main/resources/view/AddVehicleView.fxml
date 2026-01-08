@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import java.lang.String?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="showroom.controller.AddVehicleController"
+      spacing="20" styleClass="dialog-pane" prefWidth="550" prefHeight="700" maxHeight="700">
+    
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <VBox spacing="5" alignment="CENTER_LEFT">
+        <Text text="Add New Vehicle" styleClass="header-text" style="-fx-font-size: 24px;"/>
+        <Text text="Enter the details of the new vehicle below" styleClass="subheader-text"/>
+    </VBox>
+
+    <Separator />
+
+    <!-- Scrollable Content Area -->
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background: #1E1E1E; -fx-background-color: transparent;">
+        <VBox spacing="20">
+            <GridPane vgap="20" hgap="15">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="120"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+
+                <!-- Vehicle Type -->
+                <Label text="Vehicle Type" style="-fx-text-fill: #B0B0B0;" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="typeComboBox" GridPane.rowIndex="0" GridPane.columnIndex="1" maxWidth="Infinity" styleClass="combo-box">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Car"/>
+                            <String fx:value="Motorcycle"/>
+                            <String fx:value="Truck"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <!-- Common Fields -->
+                <Label text="Brand" style="-fx-text-fill: #B0B0B0;" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="brandField" GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="e.g. Toyota"/>
+
+                <Label text="Model" style="-fx-text-fill: #B0B0B0;" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="modelField" GridPane.rowIndex="2" GridPane.columnIndex="1" promptText="e.g. Camry"/>
+
+                <Label text="Year" style="-fx-text-fill: #B0B0B0;" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextField fx:id="yearField" GridPane.rowIndex="3" GridPane.columnIndex="1" promptText="e.g. 2024"/>
+
+                <Label text="Price ($)" style="-fx-text-fill: #B0B0B0;" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField fx:id="priceField" GridPane.rowIndex="4" GridPane.columnIndex="1" promptText="e.g. 25000"/>
+
+                <Label text="Color" style="-fx-text-fill: #B0B0B0;" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <TextField fx:id="colorField" GridPane.rowIndex="5" GridPane.columnIndex="1" promptText="e.g. Red"/>
+
+                <Label text="Status" style="-fx-text-fill: #B0B0B0;" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="statusComboBox" GridPane.rowIndex="6" GridPane.columnIndex="1" maxWidth="Infinity" styleClass="combo-box">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="AVAILABLE"/>
+                            <String fx:value="SOLD"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <Label text="Images" style="-fx-text-fill: #B0B0B0;" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+                <HBox spacing="10" GridPane.rowIndex="7" GridPane.columnIndex="1">
+                    <Button text="Select Images..." onAction="#handleSelectImages" styleClass="button-secondary" />
+                    <Label fx:id="imageCountLabel" text="0 images selected" style="-fx-text-fill: #888;" alignment="CENTER_LEFT" />
+                </HBox>
+            </GridPane>
+
+            <!-- Dynamic Container for Specific Fields -->
+            <VBox spacing="10" style="-fx-background-color: #252525; -fx-padding: 15; -fx-background-radius: 8;">
+                <Label text="Specific Specifications" style="-fx-text-fill: #BB86FC; -fx-font-weight: bold;"/>
+                <VBox fx:id="specificFieldsContainer" spacing="10"/>
+            </VBox>
+        </VBox>
+    </ScrollPane>
+
+    <!-- Fixed Action Buttons at Bottom -->
+    <HBox spacing="15" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#handleCancel" styleClass="button-secondary" prefWidth="100"/>
+        <Button text="Save Vehicle" onAction="#handleSave" styleClass="button-primary" prefWidth="120"/>
+    </HBox>
+
+</VBox>
